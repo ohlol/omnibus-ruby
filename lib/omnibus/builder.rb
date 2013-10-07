@@ -40,6 +40,7 @@ module Omnibus
       def_delegator :@builder, :rake
       def_delegator :@builder, :block
       def_delegator :@builder, :name
+      def_delegator :@builder, :project_root
 
       def initialize(builder, software)
         @builder, @software = builder, software
@@ -191,6 +192,10 @@ module Omnibus
 
     def block(&rb_block)
       @build_commands << rb_block
+    end
+
+    def project_root
+      Omnibus.project_root
     end
 
     def project_dir
